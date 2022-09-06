@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
   // Socket Code Here
 /
   
-  char *ip = "127.0.0.1";
+
 
   int server_sock, client_sock;
   struct sockaddr_in server_addr, client_addr;
