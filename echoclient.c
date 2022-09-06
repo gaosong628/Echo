@@ -84,11 +84,9 @@ int  main(int argc, char **argv)
   int sock;
   struct hostent* Hostinfo;   /* holds info about a machine */
   struct sockaddr_in addr;
-  socklen_t addr_size;
   char buffer[BUFSIZE];
   long Hostaddress;
-  char input;
-  int n=1;
+ 
   
     if(argc < 3)
       {
