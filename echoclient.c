@@ -110,7 +110,7 @@ int  main(int argc, char **argv)
  while(1)
  {
    bzero(buffer,BUFSIZE);
-   if n>1 
+   if (n>1) 
    {
    printf("Please type in Message sending to Server: ");
     fgets(buffer,sizeof(buffer),stdin);
