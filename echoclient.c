@@ -42,6 +42,7 @@ int  main(int argc, char **argv)
   struct sockaddr_in addr;
   char buffer[BUFSIZE];
   long Hostaddress;
+  int n=1;
  
 
   // Parse and set command line arguments
@@ -108,12 +109,19 @@ int  main(int argc, char **argv)
   printf("Connected to the server.\n");
  while(1)
  {
-    printf("Please type in Message sending to Server: ");
-    /*(buffer,sizeof(buffer),stdin);*/
+   bzero(buffer,BUFSIZE);
+   if n>1 
+   {
+   printf("Please type in Message sending to Server: ");
+    fgets(buffer,sizeof(buffer),stdin);
+   }
+   else
+   {
+    printf("Message sending to Server For the First Time: \n"); 
     strcpy(buffer,message);
-    /*printf("Please type in Message sending to Server:");*/
+   }
+    n=n+1;
     send(sock, buffer, sizeof(buffer),0);
-    
     bzero(buffer,BUFSIZE);
     recv(sock,buffer,sizeof(buffer),0);
     printf("Message Reveived from server: %s\n",buffer);
