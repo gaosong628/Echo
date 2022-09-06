@@ -30,6 +30,11 @@ int main(int argc, char **argv) {
   int maxnpending = 5;
   int option_char;
   int portno = 10823; /* port to listen on */
+  int server_sock, client_sock;
+  struct sockaddr_in server_addr, client_addr;
+  socklen_t addr_size;
+  char buffer[BUFSIZE];
+  int n;
 
   // Parse and set command line arguments
   while ((option_char =
@@ -64,16 +69,7 @@ int main(int argc, char **argv) {
     exit(1);
   }
 
-  // Socket Code Here
-/
-  
-
-
-  int server_sock, client_sock;
-  struct sockaddr_in server_addr, client_addr;
-  socklen_t addr_size;
-  char buffer[BUFSIZE];
-  int n;
+  /* Socket Code Here */
 
   server_sock = socket(AF_INET, SOCK_STREAM, 0);
   if (server_sock < 0){
@@ -92,7 +88,7 @@ int main(int argc, char **argv) {
     perror("[-]Bind error");
     exit(1);
   }
-  printf("[+]Bind to the port number: %d\n", port);
+  printf("[+]Bind to the port number: %d\n", portno);
 
   listen(server_sock, 5);
   printf("Listening...\n");
