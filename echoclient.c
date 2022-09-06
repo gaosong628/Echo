@@ -37,6 +37,12 @@ int  main(int argc, char **argv)
   int option_char = 0;
   char *message = "Hello Summer!!";
   char *hostname = "localhost";
+   int sock;
+  struct hostent* Hostinfo;   /* holds info about a machine */
+  struct sockaddr_in addr;
+  char buffer[BUFSIZE];
+  long Hostaddress;
+ 
 
   // Parse and set command line arguments
   while ((option_char =
@@ -81,20 +87,6 @@ int  main(int argc, char **argv)
 
   /* Socket Code Here */
   
-  int sock;
-  struct hostent* Hostinfo;   /* holds info about a machine */
-  struct sockaddr_in addr;
-  char buffer[BUFSIZE];
-  long Hostaddress;
- 
-  
-    if(argc < 3)
-      {
-	printf("\nUsage: client host-name host-port\n");
-	return 0;
-      }
-
-
   sock = socket(AF_INET, SOCK_STREAM, 0);
   if (sock < 0){
     perror("Socket error");
