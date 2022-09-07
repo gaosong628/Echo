@@ -14,8 +14,6 @@
 
 
 int main(int argc, char **argv) {
-  int maxnpending = 5;
-  int option_char;
   int portno = 10823; /* port to listen on */
   int server_sock, client_sock;
   struct sockaddr_in server_addr, client_addr;
