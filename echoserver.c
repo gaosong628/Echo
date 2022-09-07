@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
     perror("[-]Socket error");
     exit(1);
   }
-  printf("[+]TCP server socket created.\n");
+  //printf("[+]TCP server socket created.\n");
 
   memset(&server_addr, '\0', sizeof(server_addr)); /*set server_addr to null*/
   server_addr.sin_family = AF_INET; /*family type*/
