@@ -37,9 +37,9 @@ int  main(int argc, char **argv)
   int option_char = 0;
   char *message = "Hello Summer!!";
   char *hostname = "localhost";
-   int sock;
+   int sock; /*variable for socket handle*/
   struct hostent* Hostinfo;   /* holds info about a machine */
-  struct sockaddr_in addr;
+  struct sockaddr_in addr;  /*structure for address*/
   char buffer[BUFSIZE];
   long Hostaddress;
   int n=1;
@@ -87,7 +87,7 @@ int  main(int argc, char **argv)
   }
 
   /* Socket Code Here */
-  
+  /*create a socket and verify it*/
   sock = socket(AF_INET, SOCK_STREAM, 0);
   if (sock < 0){
     perror("Socket error");
@@ -95,15 +95,15 @@ int  main(int argc, char **argv)
   }
   printf("TCP server socket created.\n");
   
- /* get IP address from name */
-      Hostinfo=gethostbyname(hostname);
-    /* copy address into long */
+    /* get IP address */
+    Hostinfo=gethostbyname(hostname);
+    /* copy address*/
     memcpy(&Hostaddress,Hostinfo->h_addr,Hostinfo->h_length);
 
-  memset(&addr, '\0', sizeof(addr));
-  addr.sin_family = AF_INET;
-  addr.sin_port = portno;
-  addr.sin_addr.s_addr = Hostaddress;
+  memset(&addr, '\0', sizeof(addr));/*set struct addr to null*/
+  addr.sin_family = AF_INET; /*internet protocol*/
+  addr.sin_port = portno; /*address port number*/
+  addr.sin_addr.s_addr = Hostaddress;/* internet address*/
 
   connect(sock, (struct sockaddr*)&addr, sizeof(addr));
   printf("Connected to the server.\n");
@@ -111,9 +111,14 @@ int  main(int argc, char **argv)
  {
    bzero(buffer,BUFSIZE);
    if (n>1) 
-   {
-   printf("Please type in Message sending to Server: ");
+   { 
+    printf("Please type in Message sending to Server: ");
     fgets(buffer,sizeof(buffer),stdin);
+     
+     if (buffer==NULL)
+     {printf("Input message error \n");
+      exit(1);
+     }
    }
    else
    {
@@ -121,13 +126,16 @@ int  main(int argc, char **argv)
     strcpy(buffer,message);
    }
     n=n+1;
+   /*send message to the server*/
     send(sock, buffer, sizeof(buffer),0);
+   /*clear the content in buffer*/
     bzero(buffer,BUFSIZE);
+   /*receive message from the server*/
     recv(sock,buffer,sizeof(buffer),0);
     printf("Message Reveived from server: %s\n",buffer);
         
     }
-    close(sock);
+    close(sock); /*close the socket*/
     printf("Disconnected from the server.\n");
 
   return 0;
