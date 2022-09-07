@@ -17,7 +17,7 @@
 int  main(int argc, char **argv) 
 {
   unsigned short portno = 10823;
-  char *message = "Hello Summer!!";
+ // char *message = "Hello Summer!!";
   char *hostname = "localhost";
    int sock; /*variable for socket handle*/
   struct hostent* Hostinfo;   /* holds info about a machine */
@@ -59,11 +59,6 @@ int  main(int argc, char **argv)
      {printf("Input message error \n");
       exit(1);
      }
-   }
-   else
-   {
-    //printf("Message sending to Server For the First Time: \n"); 
-    strcpy(buffer,message);
    }
     n=n+1;
    /*send message to the server*/
