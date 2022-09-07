@@ -106,7 +106,7 @@ int main(int argc, char **argv) {
       /*accept data and save it into buffer*/
       recv(client_sock, buffer, sizeof(buffer),0);
       
-     if (strlen(buffer)==0 || strlen(buffer)>16)
+     if (strlen(buffer)==1 || strlen(buffer)>16)
      {printf("Received message error \n");
       exit(1);
      }
