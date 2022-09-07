@@ -17,7 +17,6 @@
 int  main(int argc, char **argv) 
 {
   unsigned short portno = 10823;
-  int option_char = 0;
   char *message = "Hello Summer!!";
   char *hostname = "localhost";
    int sock; /*variable for socket handle*/
