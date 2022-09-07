@@ -115,7 +115,7 @@ int  main(int argc, char **argv)
     printf("Please type in Message sending to Server: ");
     fgets(buffer,sizeof(buffer),stdin);
      
-     if (sizeof(buffer)==0 || sizeof(buffer)>16)
+     if (strlen(buffer)==0 || strlen(buffer)>16)
      {printf("Input message error \n");
       exit(1);
      }
