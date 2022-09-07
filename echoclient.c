@@ -34,7 +34,7 @@ int  main(int argc, char **argv)
     perror("Socket error");
     exit(1);
   }
-  printf("TCP server socket created.\n");
+  //printf("TCP server socket created.\n");
   
     /* get IP address */
     Hostinfo=gethostbyname(hostname);
@@ -47,7 +47,7 @@ int  main(int argc, char **argv)
   addr.sin_addr.s_addr = Hostaddress;/* internet address*/
 
   connect(sock, (struct sockaddr*)&addr, sizeof(addr));
-  printf("Connected to the server.\n");
+  //printf("Connected to the server.\n");
  while(1)
  {
    bzero(buffer,BUFSIZE);
