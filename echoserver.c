@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
   
   /*make sure server is ready to listen*/
   listen(server_sock, 5);
-  //printf("Listening...\n");
+  printf("Listening...\n");
   
   while(1)
   {
